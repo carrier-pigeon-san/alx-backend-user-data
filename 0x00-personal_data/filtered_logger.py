@@ -36,6 +36,7 @@ class RedactingFormatter(logging.Formatter):
         return filter_datum(self.fields, self.REDACTION,
                             super().format(record), self.SEPARATOR)
 
+
 def get_logger(self) -> logging.Logger:
     """ Returns a logger object """
     logger = logging.getLogger('user_data')
