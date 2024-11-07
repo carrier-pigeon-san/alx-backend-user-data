@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """ A modulle that implements various logging functionalities """
 import logging
+import mysql.connector
 import re
 from re import sub
+import os
 from typing import List
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
@@ -46,3 +48,13 @@ def get_logger(self) -> logging.Logger:
     handler.setFormatter(RedactingFormatter(PII_FIELDS))
     logger.addHandler(handler)
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """ Returns a connector to a MySQL database """
+    return mysql.connector.connect(
+        host=os.getenv('PERSONAL_DATA_DB_HOST', 'localhost'),
+        database=os.getenv('PERSONAL_DATA_DB_NAME', 'root'),
+        user=os.getenv('PERSONAL_DATA_DB_USERNAME', 'root'),
+        password=os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    )
