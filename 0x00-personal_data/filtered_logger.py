@@ -69,7 +69,10 @@ def main() -> None:
     cursor.execute("SELECT * FROM users;")
     logger = get_logger()
     for row in cursor:
-        logger.info(row)
+        logger.info("name=%s; email=%s; phone=%s; ssn=%s; password=%s; "
+                    "ip=%s; last_login=%s; user_agent=%s;",
+                    row[0], row[1], row[2], row[3], row[4], row[5], row[6],
+                    row[7])
     cursor.close()
     db.close()
 
