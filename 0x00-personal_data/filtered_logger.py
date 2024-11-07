@@ -36,12 +36,12 @@ class RedactingFormatter(logging.Formatter):
         return filter_datum(self.fields, self.REDACTION,
                             super().format(record), self.SEPARATOR)
 
-    def get_logger(self) -> logging.Logger:
-        """ Returns a logger object """
-        logger = logging.getLogger('user_data')
-        logger.setLevel(logging.INFO)
-        logger.propagate = False
-        handler = logging.StreamHandler()
-        handler.setFormatter(self)
-        logger.addHandler(handler)
-        return logger
+def get_logger(self) -> logging.Logger:
+    """ Returns a logger object """
+    logger = logging.getLogger('user_data')
+    logger.setLevel(logging.INFO)
+    logger.propagate = False
+    handler = logging.StreamHandler()
+    handler.setFormatter(RedactingFormatter(PII_FIELDS))
+    logger.addHandler(handler)
+    return logger
