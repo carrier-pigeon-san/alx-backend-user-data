@@ -4,6 +4,7 @@ This project focuses on the process of authentication, and implements Basic Auth
 
 ## Project Structure
 
+```
 .
 ├── api
 │   └── v1
@@ -11,10 +12,11 @@ This project focuses on the process of authentication, and implements Basic Auth
 │       ├── views
 │       │    └── index.py
 │       └── auth
-│           ├── \__init__.py
+│           ├── __init__.py
 │           ├── auth.py
 │           └── basic_auth.py
 └── README.md
+```
 
 ## Learning Objectives
 
