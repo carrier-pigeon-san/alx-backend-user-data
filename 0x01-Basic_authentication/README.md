@@ -7,14 +7,14 @@ This project focuses on the process of authentication, and implements Basic Auth
 .
 ├── api
 │   └── v1
-│       ├── `app.py`
+│       ├── app.py
 │       ├── views
-│       │    └── `index.py`
+│       │    └── index.py
 │       └── auth
-│           ├── `__init__.py`
-│           ├── `auth.py`
-│           └── `basic_auth.py`
-└── `README.md`
+│           ├── \__init__.py
+│           ├── auth.py
+│           └── basic_auth.py
+└── README.md
 
 ## Learning Objectives
 
