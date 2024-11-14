@@ -30,3 +30,10 @@ class Auth:
         """Current user method.
         """
         return None
+    
+    def session_cookie(self, request=None):
+        """Returns a cookie value from a request
+        """
+        if request is None:
+            return None
+        return request.cookies.get('_my_session_id')
