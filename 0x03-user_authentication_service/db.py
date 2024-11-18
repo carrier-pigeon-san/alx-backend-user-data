@@ -29,7 +29,7 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self._session
-    
+
     def add_user(self, email: str, hashed_password: str) -> User:
         """ Add a new user to the database
         """
@@ -37,3 +37,8 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
+
+    def find_user_by(self, **kwargs) -> User:
+        """ Find a user by a given attribute
+        """
+        return self._session.query(User).filter_by(**kwargs).one()
