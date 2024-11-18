@@ -19,16 +19,16 @@ class DB:
         self._engine = create_engine('sqlite:///a.db', echo=True)
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
-        self._session = None
+        self.__session = None
 
     @property
     def _session(self) -> Session:
         """ Memoized session object
         """
-        if self._session is None:
+        if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
-        return self._session
+        return self.__session
 
     def add_user(self, email: str, hashed_password: str) -> User:
         """ Add a new user to the database
