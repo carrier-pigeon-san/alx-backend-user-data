@@ -39,7 +39,7 @@ def login():
     if not login:
         abort(401)
     session_id = AUTH.create_session(email)
-    response = jsonify({"email": "<user email>", "message": "logged in"})
+    response = jsonify({"email": email, "message": "logged in"})
     response.set_cookie('session_id', session_id)
     return response
 
@@ -54,6 +54,17 @@ def logout():
         abort(403)
     AUTH.destroy_session(user.id)
     return redirect('/')
+
+
+@app.route('/profile', methods=['GET'], strict_slashes=False)
+def profile():
+    """ Profile endpoint
+    """
+    session_id = request.cookies.get('session_id')
+    user = AUTH.get_user_from_session_id(session_id)
+    if not user:
+        abort(403)
+    return jsonify({"email": user.email}), 200
 
 
 if __name__ == "__main__":
