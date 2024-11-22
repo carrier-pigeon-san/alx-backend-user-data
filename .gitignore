@@ -1,6 +1,6 @@
 __pycache__/
 venv/
-main*
+maino*
 *.csv
 *.txt
 *.json
